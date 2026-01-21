@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<%@ page import="java.util.*,entity.Employee" %>
+
+<h2>Employee List</h2>
+
+<table border="1">
+<tr>
+    <th>ID</th><th>Name</th><th>Department</th><th>Salary</th><th>Action</th>
+</tr>
+
+<%
+List<Employee> list = (List<Employee>) session.getAttribute("employees");
+for(Employee e : list){
+%>
+<tr>
+<td><%=e.getId()%></td>
+<td><%=e.getName()%></td>
+<td><%=e.getDepartment()%></td>
+<td><%=e.getSalary()%></td>
+<td>
+<a href="deleteEmployee?id=<%=e.getId()%>">Delete</a>
+</td>
+</tr>
+<% } %>
+
+</table>
+</body>
+</html>
